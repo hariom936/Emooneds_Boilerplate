@@ -1,0 +1,30 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# logs
+*log
+logs
+
+# Environment varibales
+.env
+!.env*.example
+
+# build
+build
+dist
+
+# Code coverage
+coverage
+
+# system
+git
+git.pub
+
+# Editor
+.vscode
+
+# Certificates
+*.pem
+
+.DS_Store

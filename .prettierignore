@@ -1,0 +1,11 @@
+node_modules/
+build/
+dist/
+coverage/
+log/
+logs/
+**/*.log
+client/
+**/*.md
+tsconfig.json
+package-lock.json

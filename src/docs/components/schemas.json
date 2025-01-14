@@ -1,0 +1,134 @@
+{
+  "schemas": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "id": "5ebac534954b54139806c112",
+        "email": "fake@example.com",
+        "name": "fake name"
+      }
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "roleName": {
+          "type": "string"
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "displayName": {
+                "type": "string"
+              },
+              "permission": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "example": {
+        "_id": "653a3a42d3f6eaf4a9c88f17",
+        "roleName": "Administrator",
+        "permissions": [
+          {
+            "key": "BLITZ_MODULE",
+            "displayName": "Blitz Module",
+            "submodules": [
+              {
+                "key": "ROLE_AND_USER_MANAGEMENT",
+                "displayName": "Role And User Management",
+                "permission": {
+                  "canAccess": true
+                }
+              }
+            ]
+          }
+        ],
+        "status": "ACTIVE",
+        "createdAt": "2023-11-07T11:51:34.765Z",
+        "updatedAt": "2023-11-07T11:51:34.765Z"
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        },
+        "responseCode": {
+          "type": "number"
+        },
+        "error": {
+          "type": "string",
+          "description": "This is the error stack and may not be returned based on the current environment"
+        }
+      }
+    }
+  },
+  "securitySchemes": {
+    "bearerAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
+  },
+  "assetDefinitionMetaSchemas": {
+    "attributesMetaObject":{
+      "fieldType":{"type":"string"},
+      "dataType":{"type":"string"},
+      "fieldName":{"type":"string"},
+      "isRequired":{"type":"boolean"},
+      "isMultiple":{"type":"boolean"},
+      "label":{"type":"string"},
+      "isB2B":{"type":"boolean"},
+      "defaultValue":{"type":"object"},
+      "affiliatePartner":{"type":"array"},
+      "inheritanceRule":{"type":"string"},
+      "placeholder":{"type":"string"},
+      "description":{"type":"string"},
+      "master":{"type":"string"},
+      "options":{"type":"array"},
+      "validations":{"type":"object"},
+      "sortOrder":{"type":"number"},
+      "additionalProperties":{"type":"object"},
+      "metaCategory":{"type":"string"},
+      "isMultilingual":{"type":"boolean"},
+      "status":{"type":"string"}
+    }
+  }
+}

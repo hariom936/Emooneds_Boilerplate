@@ -1,0 +1,745 @@
+{
+
+  "/api/v1/service/userRole/action/add": {
+    "post": {
+      "summary": "Create a role in system",
+      "description": "Create a role with specified parameters.",
+      "tags": ["Roles"],
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [],
+              "properties": {
+                "roleName": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "A valid status ('ACTIVE', 'INACTIVE)"
+                },
+                "permissions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": [
+                      {
+                        "key": {
+                          "type": "string",
+                          "example": "BLITZ_MODULE"
+                        },
+                        "displayName": {
+                          "type": "string",
+                          "example": "Blitz Module"
+                        },
+                        "submodules": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "propertie": {
+                              "key": {
+                                "type": "string",
+                                "example": "ROLE_AND_USER_MANAGEMENT"
+                              },
+                              "displayName": {
+                                "type": "string",
+                                "example": "Role And User Management"
+                              },
+                              "permission": {
+                                "type": "object",
+                                "properties": {
+                                  "canAccess": {
+                                    "type": "boolean",
+                                    "example": "true"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "key": {
+                          "type": "string",
+                          "example": "META_CATEGORIES"
+                        },
+                        "displayName": {
+                          "type": "string",
+                          "example": "Meta Categories"
+                        },
+                        "submodules": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "example": "DESCRIPTIVE_METADATA"
+                              },
+                              "displayName": {
+                                "type": "string",
+                                "example": "Descriptive Metadata"
+                              },
+                              "permission": {
+                                "type": "object",
+                                "properties": {
+                                  "canRead": {
+                                    "type": "boolean",
+                                    "example": "true"
+                                  },
+                                  "canWrite": {
+                                    "type": "boolean",
+                                    "example": "true"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "key": {
+                          "type": "string",
+                          "example": "TOLLGATES"
+                        },
+                        "displayName": {
+                          "type": "string",
+                          "example": "Tollgates"
+                        },
+                        "submodules": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string",
+                                "example": "DESCRIPTIVE_METADATA"
+                              },
+                              "displayName": {
+                                "type": "string",
+                                "example": "Descriptive Metadata"
+                              },
+                              "permission": {
+                                "type": "object",
+                                "properties": {
+                                  "canStateTransition": {
+                                    "type": "boolean",
+                                    "example": "true"
+                                  },
+                                  "canSkipValidation": {
+                                    "type": "boolean",
+                                    "example": "true"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "example": {
+                "roleName": "Content Creator",
+                "status": "ACTIVE",
+                "permissions": [
+                  {
+                    "key": "BLITZ_MODULE",
+                    "displayName": "Blitz Module",
+                    "submodules": [
+                      {
+                        "key": "ROLE_AND_USER_MANAGEMENT",
+                        "displayName": "Role And User Management",
+                        "permission": {
+                          "canAccess": false
+                        }
+                      },
+                      {
+                        "key": "AUDIT_TRAILS",
+                        "displayName": "Audit Trails",
+                        "permission": {
+                          "canAccess": false
+                        }
+                      },
+                      {
+                        "key": "REPORTING",
+                        "displayName": "Reporting",
+                        "permission": {
+                          "canAccess": false
+                        }
+                      },
+                      {
+                        "key": "MANAGE_CONTENT",
+                        "displayName": "Manage Content",
+                        "permission": {
+                          "canAccess": false
+                        }
+                      },
+                      {
+                        "key": "META_MASTER",
+                        "displayName": "Meta Master",
+                        "permission": {
+                          "canAccess": false
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "key": "META_CATEGORIES",
+                    "displayName": "Meta Categories",
+                    "submodules": [
+                      {
+                        "key": "DESCRIPTIVE_METADATA",
+                        "displayName": "Descriptive Metadata",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "RIGHTS_AND_AVAILABILITY",
+                        "displayName": "Rights and Availability",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "SEO_METADATA",
+                        "displayName": "SEO Metadata",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "ADVERTISEMENT_METADATA",
+                        "displayName": "Advertisement Metadata",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "BUSINESS_RULES",
+                        "displayName": "Business Rules",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "TECHNICAL_METADATA",
+                        "displayName": "Technical Metadata",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "CONTENT_MEDIA_IMAGE",
+                        "displayName": "Content Media: Image",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "CONTENT_MEDIA_VIDEO",
+                        "displayName": "Content Media: Video",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "SPORTS_METADATA",
+                        "displayName": "Sports Metadata",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      },
+                      {
+                        "key": "MISCELLANEOUS_METADATA",
+                        "displayName": "Miscellaneous Metadata",
+                        "permission": {
+                          "canRead": false,
+                          "canWrite": false
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "key": "TOLLGATES",
+                    "displayName": "Tollgates",
+                    "submodules": [
+                      {
+                        "key": "DESCRIPTIVE_METADATA",
+                        "displayName": "Descriptive Metadata",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "RIGHTS_AND_AVAILABILITY",
+                        "displayName": "Rights and Availability",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "SEO_METADATA",
+                        "displayName": "SEO Metadata",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "ADVERTISEMENT_METADATA",
+                        "displayName": "Advertisement Metadata",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "BUSINESS_RULES",
+                        "displayName": "Business Rules",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "TECHNICAL_METADATA",
+                        "displayName": "Technical Metadata",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "CONTENT_MEDIA_IMAGE",
+                        "displayName": "Content Media: Image",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "CONTENT_MEDIA_VIDEO",
+                        "displayName": "Content Media: Video",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "SPORTS_METADATA",
+                        "displayName": "Sports Metadata",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "MISCELLANEOUS_METADATA",
+                        "displayName": "Miscellaneous Metadata",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "QC_PROCESS",
+                        "displayName": "QC Process",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "PUBLISHING",
+                        "displayName": "Publishing",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "RIGHTS_EXPIRED",
+                        "displayName": "Rights Expired",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      },
+                      {
+                        "key": "DEPUBLISH",
+                        "displayName": "Depublish",
+                        "permission": {
+                          "canStateTransition": false,
+                          "canSkipValidation": false
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "example": "Role created successfully"
+                  },
+                  "responseCode": {
+                    "type": "number",
+                    "example": 200
+                  },
+                  "data": {
+                    "example": {
+                      "roleName": "Admin",
+                      "permissions": [
+                        {
+                          "key": "BLITZ_MODULE",
+                          "displayName": "Blitz Module",
+                          "submodules": [
+                            {
+                              "key": "ROLE_AND_USER_MANAGEMENT",
+                              "displayName": "Role And User Management",
+                              "permission": {
+                                "canAccess": true
+                              }
+                            },
+                            {
+                              "key": "AUDIT_TRAILS",
+                              "displayName": "Audit Trails",
+                              "permission": {
+                                "canAccess": true
+                              }
+                            },
+                            {
+                              "key": "REPORTING",
+                              "displayName": "Reporting",
+                              "permission": {
+                                "canAccess": true
+                              }
+                            },
+                            {
+                              "key": "MANAGE_CONTENT",
+                              "displayName": "Manage Content",
+                              "permission": {
+                                "canAccess": true
+                              }
+                            },
+                            {
+                              "key": "META_MASTER",
+                              "displayName": "Meta Master",
+                              "permission": {
+                                "canAccess": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "key": "META_CATEGORIES",
+                          "displayName": "Meta Categories",
+                          "submodules": [
+                            {
+                              "key": "DESCRIPTIVE_METADATA",
+                              "displayName": "Descriptive Metadata",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "RIGHTS_AND_AVAILABILITY",
+                              "displayName": "Rights And Availability",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "SEO_DETAILS",
+                              "displayName": "SEO Details",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "ADVERTISEMENT",
+                              "displayName": "Advertisement",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "BUSINESS_RULES",
+                              "displayName": "Business Rules",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "TECHNICAL_METADATA",
+                              "displayName": "Technical Metadata",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "CONTENT_MEDIA_IMAGE",
+                              "displayName": "Content Media: Image",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "CONTENT_MEDIA_VIDEO",
+                              "displayName": "Content Media: Video",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "TRANSLATIONS",
+                              "displayName": "Translations",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "CHECKLIST",
+                              "displayName": "Checklist",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "DISCOVERY",
+                              "displayName": "Discovery",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "SPORTS",
+                              "displayName": "Sports",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            },
+                            {
+                              "key": "OTHERS",
+                              "displayName": "Others",
+                              "permission": {
+                                "canRead": true,
+                                "canWrite": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "key": "TOLLGATES",
+                          "displayName": "Tollgates",
+                          "submodules": [
+                            {
+                              "key": "DESCRIPTIVE_METADATA",
+                              "displayName": "Descriptive Metadata",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "RIGHTS_AND_AVAILABILITY",
+                              "displayName": "Rights And Availability",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "SEO_DETAILS",
+                              "displayName": "SEO Details",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "ADVERTISEMENT",
+                              "displayName": "Advertisement",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "BUSINESS_RULES",
+                              "displayName": "Business Rules",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "TECHNICAL_METADATA",
+                              "displayName": "Technical Metadata",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "CONTENT_MEDIA_IMAGE",
+                              "displayName": "Content Media: Image",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "CONTENT_MEDIA_VIDEO",
+                              "displayName": "Content Media: Video",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "TRANSLATIONS",
+                              "displayName": "Translations",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "CHECKLIST",
+                              "displayName": "Checklist",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "DISCOVERY",
+                              "displayName": "Discovery",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "SPORTS",
+                              "displayName": "Sports",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "OTHERS",
+                              "displayName": "Others",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "QC_PROCESS",
+                              "displayName": "QC Process",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "PUBLISHING",
+                              "displayName": "Publishing",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "RIGHTS_EXPIRED",
+                              "displayName": "Rights Expired",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            },
+                            {
+                              "key": "DEPUBLISH",
+                              "displayName": "Depublish",
+                              "permission": {
+                                "canStateTransition": true,
+                                "canSkipValidation": true
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "createdBy": "653a3a3ed3f6eaf4a9c88f0f",
+                      "updatedBy": "653a3a3ed3f6eaf4a9c88f0f",
+                      "status": "ACTIVE",
+                      "_id": "6544edf525c32b1847cd42db",
+                      "createdAt": "2023-11-03T12:56:21.707Z",
+                      "updatedAt": "2023-11-03T12:56:21.707Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/Unauthorized"
+        },
+        "403": {
+          "$ref": "#/components/responses/Forbidden"
+        },
+        "422": {
+          "$ref": "#/components/responses/UnprocessableEntity"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "/api/v1/user/add": {
+    "post": {
+      "summary": "Create a user in system",
+      "description": "Create a user with specified parameters and userName and userEmail should be unique",
+      "tags": ["Users"],
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "userId",
+                "userName",
+                "firstName",
+                "lastName",
+                "userEmail",
+                "roleId",
+                "status"
+              ],
+              "properties": {
+                "userId": { 
+                  "type": "Number",
+                  "required": true
+                },
+                "firstName": {
+                  "type": "String",
+                  "required": true
+                },
+                "userName": {
+                  "type": "String",
+                  "required": true
+                },
+                "lastName": {
+                  "type": "String",
+                  "required": false
+                },
+                "userEmail": {
+                  "type": "String",
+                  "required": true,
+                  "unique": true
+                },
+                "roleId": {
+                  "ref": "Roles",
+                  "type": "Number",
+                  "required": false
+                },
+                "token": { "type": "String", "default": null },
+                "status": {
+                "type": "String",
+                "required": true,
+                "default": "dbStatus.ACTIVE"
+    }
+              },
+              "example": {
+                "firstName": "test",
+                "userName": "hasassariomv",
+                "lastName": "test last name",
+                "userEmail": "sssasss@kellton.com",
+                "roleId":1,
+                "status": "ACTIVE"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "object"
+                  },
+                  "responseCode": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "message": "User created successfully!",
+                  "responseCode": 200,
+                  "data": {
+                      "userId": 3,
+                      "userEmail": "sssasss@kellton.com",
+                      "firstName": "test",
+                      "lastName": "test last name",
+                      "userName": "hasassariomv",
+                      "role": {
+                          "roleId": 1,
+                          "roleName": "Hospital_Super_Admin"
+                      },
+                      "status": "ACTIVE",
+                      "token": ""
+                  },
+                  "error": null
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/Unauthorized"
+        },
+        "403": {
+          "$ref": "#/components/responses/Forbidden"
+        },
+        "422": {
+          "$ref": "#/components/responses/UnprocessableEntity"
+        }
+      }
+    }
+  }
+}

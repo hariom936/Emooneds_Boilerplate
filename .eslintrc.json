@@ -1,0 +1,20 @@
+{
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:jest/recommended"],
+  "plugins": ["@typescript-eslint", "jest"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["dist", "build", "*logs", "scripts", "seeders"],
+  "rules": {
+    "jest/expect-expect": "off",
+    "no-unused-expressions": ["error", { "allowShortCircuit": true }],
+    "no-var": "error",
+    "no-debugger": "error"
+  }
+}

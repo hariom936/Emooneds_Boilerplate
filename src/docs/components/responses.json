@@ -1,0 +1,111 @@
+{
+  "DuplicateEmail": {
+    "description": "Email already taken",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ApiResponse"
+        },
+        "example": {
+          "message": "Email already taken",
+          "data": null
+        }
+      }
+    }
+  },
+  "NoContent": {
+    "description": "Success but no data to show",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ApiResponse"
+        },
+        "example": {
+          "message": "Success",
+          "data": null
+        }
+      }
+    }
+  },
+  "Unauthorized": {
+    "description": "Unauthorized",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ApiResponse"
+        },
+        "example": {
+          "message": "Invalid Login Token. Please login again",
+          "responseCode": 401,
+          "data": null,
+          "error": null
+        }
+      }
+    }
+  },
+  "UnprocessableEntity": {
+    "description": "Unprocessable Entity",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ApiResponse"
+        },
+        "example": {
+          "message": "Invalid data, please check your request",
+          "errors": ["Error message #1", "Error message #2"],
+          "emooneedsCode": "EMOONEEDS_XXYYY",
+          "responseCode": 422
+        }
+      }
+    }
+  },
+  "Forbidden": {
+    "description": "Forbidden",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ApiResponse"
+        },
+        "example": {
+          "message": "Forbidden",
+          "responseCode": 403,
+          "data": null,
+          "error": null
+        }
+      }
+    }
+  },
+  "NotFound": {
+    "description": "Not found",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ApiResponse"
+        },
+        "example": {
+          "message": "Not found",
+          "responseCode": 404,
+          "data": null,
+          "error": null
+        }
+      }
+    }
+  },
+  "ServerError": {
+    "description": "Internal Server Error",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "#/components/schemas/ApiResponse"
+        },
+        "example": {
+          "message": "Internal Server Error",
+          "responseCode": 500,
+          "emooneedsCode": "EMOONEEDS_XXYYY",
+          "data": null,
+          "error": null
+        }
+      }
+    }
+  }
+}

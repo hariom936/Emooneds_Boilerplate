@@ -48,7 +48,6 @@ tests/                 # Test cases code
 ```
 
 ## DB Access
-~~DB is accessed in a password-less manner using the [X.509](https://en.wikipedia.org/wiki/X.509) standard and a TLS certificate. For this, follow the instructions to create your Allas account and download the certificate -~~
 
 DB is accessed using a standard user name and password. You may download and install [mondoDB](https://www.mongodb.com/try/download/community) locally or setup an Atlas account. Steps to setup your mongoDB Atlas account are explained below -
 

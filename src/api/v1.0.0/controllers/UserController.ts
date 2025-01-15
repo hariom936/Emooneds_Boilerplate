@@ -93,7 +93,7 @@ public async createUser(
 
 
    //User Listing
-   @UseBefore(AuthJwt)
+  //  @UseBefore(AuthJwt)
   @Get(action.LIST)
   public async userListing(
      @Req() req: Request,

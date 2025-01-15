@@ -21,7 +21,7 @@ const setupEnv = async () => {
       process.env.SWAGGER_DOMAIN as string,
       process.env.MONGO_DB_NAME as string,
       process.env.MONGO_URL as string,
-      // process.env.JWT_ACCESS_EXPIRATION as string,
+      process.env.JWT_ACCESS_EXPIRATION as string,
       
     ];
 

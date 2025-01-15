@@ -27,6 +27,10 @@ const config = {
     imgSrc: ["'self'", "'unsafe-inline'"]
   },
 
+  jwt: {
+    secret: process.env.JWT_SECRET || 'default_jwt_secret',
+    accessExpiration: process.env.JWT_ACCESS_EXPIRATION || '1d', // Adjust as needed
+  },
   
   SESSION_EXPIRE_TIME: Number(process.env.SESSION_EXPIRE_TIME) || 10,
 };

@@ -59,9 +59,7 @@ export class CreateUser {
   @IsIn(databaseConstants.CREATE_USER_VALID_STATUS, { message: validationConstants.INVALID_VALUE })
   status: boolean;
 
-  @IsOptional()
-  @IsNumber({}, { message: validationConstants.INVALID_VALUE }) // Validate as a number
-  roleId: number; // Add this line
+  
 }
 
 export class EditUser {

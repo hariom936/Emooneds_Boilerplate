@@ -164,7 +164,7 @@ public async loginUser(user: LoginUser) {
                 roleName: roleExists ? roleExists.roleName : null // Include role name or null if not found
             },
             status: newUser.status,
-            token: '' // No token generated here
+            // token: '' // No token generated here
         };
 
         // Return the constructed user object

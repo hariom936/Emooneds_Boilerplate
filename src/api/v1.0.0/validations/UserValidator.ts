@@ -34,6 +34,11 @@ export class CreateUser {
   @IsNumber({}, { message: validationConstants.INVALID_VALUE }) // Validate as a number
   userId: number; // Add this line
 
+  @IsOptional({ message: validationConstants.REQUIRED })
+  @IsNumber({}, { message: validationConstants.INVALID_VALUE }) // Validate as a number
+  roleId: number; // Add this line
+
+
   @IsNotEmpty({ message: validationConstants.REQUIRED })
   @MaxLength(100, { message: 'First name is maximum $constraint1 characters' })
   @IsString({ message: validationConstants.IS_STRING_TYPE })
